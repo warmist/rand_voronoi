@@ -18,6 +18,7 @@ int main(){
     int ny = 1080;
     int cx=nx/2;
     int cy=ny/2;
+    int size_c=ny/2-200;
     FILE *fp;
 
     uint8_t *pixels = (uint8_t*)calloc(nx*ny, 3);
@@ -25,18 +26,12 @@ int main(){
     df_point *closest_points = (df_point*)calloc(nx*ny, sizeof(*closest_points));
 
     std::vector<int> point_coords;
-    for (i = 0; i < 50; i++){
-        int x=nx/2;
-        int y=ny/2;
-        int dx=cx-x;
-        int dy=cy-y;
-        while(dx*dx+dy*dy<100000)
-        {
-            x = rand() % nx;
-            y = rand() % ny;
-            dx=cx-x;
-            dy=cy-y;
-        }
+    float delta_angle=3.14159*2.0/100.0;
+    for (i = 0; i < 100; i++){
+
+        int x=cos(delta_angle*i)*size_c+cx;
+        int y=sin(delta_angle*i)*size_c+cy;
+        
         int j = x + y*nx;
         point_coords.push_back(j);
     }

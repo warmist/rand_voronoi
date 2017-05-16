@@ -1,7 +1,7 @@
 @echo off
 
 
-set BINDIR=build\bin\x86
+set BINDIR=bin
 set OBJDIR=build\obj
 
 set EXECUTABLE=df.exe
